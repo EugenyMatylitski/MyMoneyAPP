@@ -55,7 +55,7 @@
 		84AE27A5289A91A500B446D0 /* Spending+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE27A1289A91A500B446D0 /* Spending+CoreDataProperties.swift */; };
 		84AE27A6289A91A500B446D0 /* SpendingCategories+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE27A2289A91A500B446D0 /* SpendingCategories+CoreDataClass.swift */; };
 		84AE27A7289A91A500B446D0 /* SpendingCategories+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE27A3289A91A500B446D0 /* SpendingCategories+CoreDataProperties.swift */; };
-		84AE27A9289A93F600B446D0 /* CategoriesVCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE27A8289A93F600B446D0 /* CategoriesVCModel.swift */; };
+		84AE27A9289A93F600B446D0 /* CategoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE27A8289A93F600B446D0 /* CategoriesViewModel.swift */; };
 		84AE27AB289BB2E600B446D0 /* Extension+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE27AA289BB2E600B446D0 /* Extension+UIColor.swift */; };
 		84AE27AD28A2627600B446D0 /* OperationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE27AC28A2627600B446D0 /* OperationsViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -112,7 +112,7 @@
 		84AE27A1289A91A500B446D0 /* Spending+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Spending+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		84AE27A2289A91A500B446D0 /* SpendingCategories+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SpendingCategories+CoreDataClass.swift"; sourceTree = "<group>"; };
 		84AE27A3289A91A500B446D0 /* SpendingCategories+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SpendingCategories+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		84AE27A8289A93F600B446D0 /* CategoriesVCModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesVCModel.swift; sourceTree = "<group>"; };
+		84AE27A8289A93F600B446D0 /* CategoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewModel.swift; sourceTree = "<group>"; };
 		84AE27AA289BB2E600B446D0 /* Extension+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIColor.swift"; sourceTree = "<group>"; };
 		84AE27AC28A2627600B446D0 /* OperationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationsViewModel.swift; sourceTree = "<group>"; };
 		EED4B56A388C5D5D51F91ABB /* Pods-MyMoneyApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyMoneyApp.release.xcconfig"; path = "Target Support Files/Pods-MyMoneyApp/Pods-MyMoneyApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -307,7 +307,7 @@
 			children = (
 				84852F3C2885B81F00B1C468 /* CategoriesVC.swift */,
 				848E32B4288814E3004BB625 /* CategoryStruct.swift */,
-				84AE27A8289A93F600B446D0 /* CategoriesVCModel.swift */,
+				84AE27A8289A93F600B446D0 /* CategoriesViewModel.swift */,
 			);
 			path = SpendingCategories;
 			sourceTree = "<group>";
@@ -561,7 +561,7 @@
 				842FA92B28A65047009E9199 /* CategoryPicked.swift in Sources */,
 				84AE2795289A8D9800B446D0 /* Account+CoreDataProperties.swift in Sources */,
 				84AE276028980AE700B446D0 /* AccountsViewModel.swift in Sources */,
-				84AE27A9289A93F600B446D0 /* CategoriesVCModel.swift in Sources */,
+				84AE27A9289A93F600B446D0 /* CategoriesViewModel.swift in Sources */,
 				84AE279E289A916500B446D0 /* IncomeCategories+CoreDataProperties.swift in Sources */,
 				84AE27A5289A91A500B446D0 /* Spending+CoreDataProperties.swift in Sources */,
 				84AE279C289A916500B446D0 /* Income+CoreDataProperties.swift in Sources */,
