@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21D62" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Account" representedClassName="Account" syncable="YES">
+        <attribute name="amount" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="comment" optional="YES" attributeType="String"/>
+        <attribute name="currency" optional="YES" attributeType="String"/>
+        <attribute name="dateOfCreating" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="incomes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Income" inverseName="account" inverseEntity="Income"/>
+        <relationship name="spendings" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Spending" inverseName="account" inverseEntity="Spending"/>
+    </entity>
+    <entity name="Income" representedClassName="Income" syncable="YES">
+        <attribute name="comment" optional="YES" attributeType="String"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="sum" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="account" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Account" inverseName="incomes" inverseEntity="Account"/>
+        <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="IncomeCategories" inverseName="incomes" inverseEntity="IncomeCategories"/>
+    </entity>
+    <entity name="IncomeCategories" representedClassName="IncomeCategories" syncable="YES">
+        <attribute name="amount" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="color" optional="YES" attributeType="String"/>
+        <attribute name="imageName" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="incomes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Income" inverseName="category" inverseEntity="Income"/>
+    </entity>
+    <entity name="Spending" representedClassName="Spending" syncable="YES">
+        <attribute name="comment" optional="YES" attributeType="String"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="sum" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="account" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Account" inverseName="spendings" inverseEntity="Account"/>
+        <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SpendingCategories" inverseName="spendings" inverseEntity="SpendingCategories"/>
+    </entity>
+    <entity name="SpendingCategories" representedClassName="SpendingCategories" syncable="YES">
+        <attribute name="amount" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="color" optional="YES" attributeType="String"/>
+        <attribute name="imageName" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="spendings" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Spending" inverseName="category" inverseEntity="Spending"/>
+    </entity>
+    <elements>
+        <element name="Account" positionX="-45" positionY="0" width="128" height="134"/>
+        <element name="Income" positionX="45" positionY="135" width="128" height="104"/>
+        <element name="IncomeCategories" positionX="-18" positionY="63" width="128" height="104"/>
+        <element name="Spending" positionX="27" positionY="108" width="128" height="104"/>
+        <element name="SpendingCategories" positionX="9" positionY="81" width="128" height="104"/>
+    </elements>
+</model>
