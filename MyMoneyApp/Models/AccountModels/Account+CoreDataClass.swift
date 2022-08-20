@@ -16,6 +16,8 @@ public class Account: NSManagedObject {
         return incomes?.allObjects as? [Income] ?? []
     }
     
+// Returns symbol of choosing currency
+    
     var currencySymbol : String {
         switch self.currency{
         case "eur": return "\u{20AC}"

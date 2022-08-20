@@ -7,6 +7,9 @@
 
 import Foundation
 import UIKit
+
+//MARK: delegate to update sum of selected operation
+
 protocol ReloadSumDelegate  {
     func reloadSum(operation : OperationProtocol)
 }
@@ -37,40 +40,6 @@ final class SumEditingVC : UIViewController{
         newValueTextField.becomeFirstResponder()
     }
     
-    
-    
-    func showAnimation(){
-        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {
-            self.view.backgroundColor = .black.withAlphaComponent(0.2)
-            self.viewCenterYConstraint.constant -= self.view.frame.height
-            self.view.layoutIfNeeded()
-            self.view.layoutSubviews()
-        }
-        UIView.animate(withDuration: 0.3, delay: 0.1) {
-            self.cancelButton.backgroundColor = .white
-            self.cancelButton.tintColor = .tintColor
-            self.okButton.backgroundColor = .white
-            self.okButton.tintColor = .tintColor
-        }
-    }
-    func hideAnimation(){
-        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseIn) { [self] in
-            self.viewCenterYConstraint.constant += view.frame.height
-            self.newValueTextField.endEditing(true)
-            self.view.layoutIfNeeded()
-            self.view.layoutSubviews()
-            view.backgroundColor = .clear
-            okButton.backgroundColor = .clear
-            okButton.tintColor = .clear
-            cancelButton.backgroundColor = .clear
-            cancelButton.tintColor = .clear
-        }completion: { _ in
-            self.dismiss(animated: false)
-        }
-    }
-    @IBAction private func gestureDidTap(){
-        hideAnimation()
-    }
     func setupView(){
         view.backgroundColor = .clear
         self.viewCenterYConstraint.constant += view.frame.height
@@ -91,6 +60,44 @@ final class SumEditingVC : UIViewController{
 
         
     }
+
+    func showAnimation(){
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {
+            self.view.backgroundColor = .black.withAlphaComponent(0.2)
+            self.viewCenterYConstraint.constant -= self.view.frame.height
+            self.view.layoutIfNeeded()
+            self.view.layoutSubviews()
+        }
+        UIView.animate(withDuration: 0.3, delay: 0.1) {
+            self.cancelButton.backgroundColor = .white
+            self.cancelButton.tintColor = .tintColor
+            self.okButton.backgroundColor = .white
+            self.okButton.tintColor = .tintColor
+        }
+    }
+    
+    func hideAnimation(){
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseIn) { [self] in
+            self.viewCenterYConstraint.constant += view.frame.height
+            self.newValueTextField.endEditing(true)
+            self.view.layoutIfNeeded()
+            self.view.layoutSubviews()
+            view.backgroundColor = .clear
+            okButton.backgroundColor = .clear
+            okButton.tintColor = .clear
+            cancelButton.backgroundColor = .clear
+            cancelButton.tintColor = .clear
+        }completion: { _ in
+            self.dismiss(animated: false)
+        }
+    }
+
+// Action to dismiss viewcontroller when user did tap on empty space
+    
+    @IBAction private func gestureDidTap(){
+        hideAnimation()
+    }
+   
     @IBAction private func cancelButtonDidTap(){
         hideAnimation()
     }

@@ -10,10 +10,13 @@ import Foundation
 import CoreData
 
 @objc(IncomeCategories)
+
 public class IncomeCategories: NSManagedObject {
     var allIncomes : [Income]{
         return incomes?.allObjects as? [Income] ?? []
     }
+    
+//Property to be able to count sum of all incomes 
     var moneyIncome : Double{
         var moneyIncome : Double = 0.0
         allIncomes.forEach { income in

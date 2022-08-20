@@ -29,6 +29,7 @@ final class ChooseCurrencyVC : UIViewController{
         self.backgroundView.layer.cornerRadius = 20.0
         hideElements()
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         showAnimation()
@@ -45,6 +46,7 @@ final class ChooseCurrencyVC : UIViewController{
             self.tableView.backgroundColor = .white
         }
     }
+    
     private func setupNavBar(){
         let buttonImage = UIImage(systemName: "chevron.backward")
         let backButton = UIBarButtonItem(image: buttonImage, style: .plain, target: self, action: #selector(backButtonDidTap))
@@ -56,9 +58,11 @@ final class ChooseCurrencyVC : UIViewController{
     @objc private func backButtonDidTap(){
         navigationController?.popViewController(animated: true)
     }
+    
     @IBAction private func tapGestureDidTap(){
         dismiss(animated: false)
     }
+    
 }
 
 extension ChooseCurrencyVC : UITableViewDelegate, UITableViewDataSource{
@@ -83,10 +87,17 @@ extension ChooseCurrencyVC : UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       
-        self.account?.currency = currencies[indexPath.row].symbol
-        CoreDataService.saveContext()
-        delegate?.setupAccount(account: account!)
+        let newAccount = Account(context: CoreDataService.mainContext)
+        newAccount.amount = self.account?.amount ?? 0.0
+        newAccount.comment = self.account?.comment
+        newAccount.currency = self.account?.currency
+        newAccount.dateOfCreating = self.account?.dateOfCreating
+        newAccount.name = self.account?.name
+        newAccount.spendings = self.account?.spendings
+        newAccount.incomes = self.account?.incomes
+        newAccount.currency = currencies[indexPath.row].symbol
+//        CoreDataService.saveContext()
+        delegate?.setupAccount(account: newAccount)
         dismiss(animated: false)
     }
 }

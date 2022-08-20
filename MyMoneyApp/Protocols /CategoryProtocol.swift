@@ -7,6 +7,9 @@
 
 import Foundation
 
+
+// MARK: - protocol to reuse screen where we using categories
+
 protocol CategoryProtocol{
     var amount: Double { get }
     var imageName: String? { get }

@@ -17,7 +17,7 @@
 		842FA92E28A66B65009E9199 /* OperationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842FA92D28A66B65009E9199 /* OperationProtocol.swift */; };
 		842FA93128A67F36009E9199 /* ChooseCurrencyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842FA93028A67F36009E9199 /* ChooseCurrencyVC.swift */; };
 		842FA93428A67F6C009E9199 /* CurrencyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842FA93328A67F6C009E9199 /* CurrencyCell.swift */; };
-		842FA93628A68148009E9199 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842FA93528A68148009E9199 /* Currency.swift */; };
+		842FA93628A68148009E9199 /* Currency Typealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842FA93528A68148009E9199 /* Currency Typealias.swift */; };
 		842FA93C28AA7248009E9199 /* OperationEditingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842FA93B28AA7248009E9199 /* OperationEditingVC.swift */; };
 		842FA93E28AA7262009E9199 /* EditingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842FA93D28AA7262009E9199 /* EditingCell.swift */; };
 		842FA94428AB9B31009E9199 /* EditingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842FA94328AB9B31009E9199 /* EditingViewModel.swift */; };
@@ -72,7 +72,7 @@
 		842FA92D28A66B65009E9199 /* OperationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationProtocol.swift; sourceTree = "<group>"; };
 		842FA93028A67F36009E9199 /* ChooseCurrencyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCurrencyVC.swift; sourceTree = "<group>"; };
 		842FA93328A67F6C009E9199 /* CurrencyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCell.swift; sourceTree = "<group>"; };
-		842FA93528A68148009E9199 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		842FA93528A68148009E9199 /* Currency Typealias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Currency Typealias.swift"; sourceTree = "<group>"; };
 		842FA93B28AA7248009E9199 /* OperationEditingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationEditingVC.swift; sourceTree = "<group>"; };
 		842FA93D28AA7262009E9199 /* EditingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingCell.swift; sourceTree = "<group>"; };
 		842FA94328AB9B31009E9199 /* EditingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingViewModel.swift; sourceTree = "<group>"; };
@@ -196,7 +196,7 @@
 			children = (
 				842FA93228A67F4A009E9199 /* CurrencyCell */,
 				842FA93028A67F36009E9199 /* ChooseCurrencyVC.swift */,
-				842FA93528A68148009E9199 /* Currency.swift */,
+				842FA93528A68148009E9199 /* Currency Typealias.swift */,
 			);
 			path = ChooseCurrency;
 			sourceTree = "<group>";
@@ -265,8 +265,8 @@
 			isa = PBXGroup;
 			children = (
 				841C5AB728AE92590092CA99 /* Extensions */,
-				841C5AB328AE1A580092CA99 /* Enums */,
 				841C5AB228AE1A4A0092CA99 /* Protocols  */,
+				841C5AB328AE1A580092CA99 /* Enums */,
 				842FA92C28A6697C009E9199 /* App */,
 				84AE275C289807E700B446D0 /* Services */,
 				84AE27572898074900B446D0 /* Models */,
@@ -291,8 +291,8 @@
 				842FA94928AC1D21009E9199 /* SumEditing */,
 				842FA94528AB9E3C009E9199 /* CategoryEditing */,
 				842FA93A28AA722E009E9199 /* OperationEditing */,
-				842FA92F28A67EF8009E9199 /* ChooseCurrency */,
 				848E32BD288FDB95004BB625 /* Operations */,
+				842FA92F28A67EF8009E9199 /* ChooseCurrency */,
 				84AE27532897F7A000B446D0 /* AddAccountVC */,
 				848E32B82889627A004BB625 /* AccountsVC */,
 				848E32B12888068A004BB625 /* CategoryCell */,
@@ -572,7 +572,7 @@
 				848E32C3288FDCBA004BB625 /* OperationCell.swift in Sources */,
 				84AE27A6289A91A500B446D0 /* SpendingCategories+CoreDataClass.swift in Sources */,
 				84AE275E289807FF00B446D0 /* CoreDataService.swift in Sources */,
-				842FA93628A68148009E9199 /* Currency.swift in Sources */,
+				842FA93628A68148009E9199 /* Currency Typealias.swift in Sources */,
 				84AE2794289A8D9800B446D0 /* Account+CoreDataClass.swift in Sources */,
 				84AE27552897F7BE00B446D0 /* AddAccountVC.swift in Sources */,
 				84AE279B289A916500B446D0 /* Income+CoreDataClass.swift in Sources */,

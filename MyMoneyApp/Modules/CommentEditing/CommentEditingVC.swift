@@ -35,20 +35,6 @@ final class CommentEditingVC : UIViewController{
         textView.becomeFirstResponder()
     }
     
-    func showAnimation(){
-        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {
-            self.view.backgroundColor = .black.withAlphaComponent(0.2)
-            self.textViewCenterYConstraint.constant
-            self.textViewCenterYConstraint.constant -= self.view.frame.height
-            self.view.layoutIfNeeded()
-            self.view.layoutSubviews()
-        }
-        UIView.animate(withDuration: 0.3, delay: 0.1) {
-            self.cancelButton.backgroundColor = .white
-            self.cancelButton.tintColor = .tintColor
-        }
-    }
-    
     func setupView(){
         view.backgroundColor = .clear
         self.textViewCenterYConstraint.constant += view.frame.height
@@ -71,6 +57,21 @@ final class CommentEditingVC : UIViewController{
         
     }
     
+// Animation setup block
+    func showAnimation(){
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {
+            self.view.backgroundColor = .black.withAlphaComponent(0.2)
+            self.textViewCenterYConstraint.constant
+            self.textViewCenterYConstraint.constant -= self.view.frame.height
+            self.view.layoutIfNeeded()
+            self.view.layoutSubviews()
+        }
+        UIView.animate(withDuration: 0.3, delay: 0.1) {
+            self.cancelButton.backgroundColor = .white
+            self.cancelButton.tintColor = .tintColor
+        }
+    }
+    
     func hideAnimation(){
         UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseIn) { [self] in
             self.textViewCenterYConstraint.constant += view.frame.height
@@ -87,6 +88,9 @@ final class CommentEditingVC : UIViewController{
         }
     }
     
+//End of animation block
+    
+    
     @objc private func cancelButtonDidTap(){
         hideAnimation()
     }
@@ -101,6 +105,9 @@ final class CommentEditingVC : UIViewController{
         hideAnimation()
     }
 }
+
+
+//MARK: TableView delegate
 
 extension CommentEditingVC : UITextViewDelegate{
     func textViewDidChange(_ textView: UITextView) {

@@ -9,6 +9,7 @@
 import Foundation
 import CoreData
 
+// MARK: Categories of incomes
 
 extension Income {
 
@@ -27,6 +28,8 @@ extension Income {
 extension Income : Identifiable {
 
 }
+
+// Choosing type of operation
 
 extension Income : OperationProtocol{
     var categoryPicked: CategoryPicked {

@@ -9,13 +9,14 @@
 import Foundation
 import CoreData
 
+// MARK: Categories of expences
 
 extension Spending {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Spending> {
         return NSFetchRequest<Spending>(entityName: "Spending")
     }
-
+    
     @NSManaged public var date: Date?
     @NSManaged public var sum: Double
     @NSManaged public var comment: String?
@@ -27,6 +28,9 @@ extension Spending {
 extension Spending : Identifiable {
 
 }
+
+
+// Choosing type of operation
 
 extension Spending : OperationProtocol{
     var categoryPicked: CategoryPicked {

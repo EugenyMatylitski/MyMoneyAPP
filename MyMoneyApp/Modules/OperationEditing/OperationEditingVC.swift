@@ -55,6 +55,7 @@ final class OperationEditingVC : UIViewController{
     }
 }
 
+//MARK: TableView delegate
 
 extension OperationEditingVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -143,6 +144,8 @@ extension OperationEditingVC : UITableViewDelegate, UITableViewDataSource {
         }
     }
 }
+
+//MARK: Updating data delegates
 
 extension OperationEditingVC : ReloadCategoryDelegate{
     func setOperation(operation: OperationProtocol) {

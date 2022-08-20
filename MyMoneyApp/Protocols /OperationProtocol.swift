@@ -7,6 +7,9 @@
 
 import Foundation
 
+// MARK: - operation protocol
+//protocol to reuse screen where we can use different type of operations
+
 protocol OperationProtocol {
     var categoryPicked : CategoryPicked {get}
     var date: Date?{get set}

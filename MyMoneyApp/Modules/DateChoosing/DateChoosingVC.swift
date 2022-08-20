@@ -7,6 +7,9 @@
 
 import Foundation
 import UIKit
+
+// MARK: delegate to show operations of chosen date
+
 protocol ChosenDateDelegate {
     func setChosenDate(date : Date)
 }
@@ -29,17 +32,6 @@ final class DateChoosingVC : UIViewController{
         super.viewDidAppear(animated)
         
         showAnimation()
-    }
-    
-    func showAnimation(){
-        UIView.animate(withDuration: 0.2, delay: 0) {
-            self.view.backgroundColor = .black.withAlphaComponent(0.2)
-            self.datePicker.backgroundColor = .white
-            self.datePicker.alpha = 1.0
-            self.datePicker.tintColor = .tintColor
-            self.cancelButton.backgroundColor = .white
-            self.cancelButton.tintColor = .tintColor
-        }
     }
     
     func setupView(){
@@ -66,6 +58,20 @@ final class DateChoosingVC : UIViewController{
         
         
     }
+    
+//Setup of animation
+    
+    func showAnimation(){
+        UIView.animate(withDuration: 0.2, delay: 0) {
+            self.view.backgroundColor = .black.withAlphaComponent(0.2)
+            self.datePicker.backgroundColor = .white
+            self.datePicker.alpha = 1.0
+            self.datePicker.tintColor = .tintColor
+            self.cancelButton.backgroundColor = .white
+            self.cancelButton.tintColor = .tintColor
+        }
+    }
+    
     @IBAction private func animate(){
         UIView.animate(withDuration: 0.1, delay: 0){ [self] in
             okButton.backgroundColor = .white
@@ -88,6 +94,8 @@ final class DateChoosingVC : UIViewController{
         }
     }
     
+// End of animation block
+    
     @objc private func cancelButtonDidTap(){
        hideAnimation()
     }
@@ -96,6 +104,9 @@ final class DateChoosingVC : UIViewController{
         delegate?.setChosenDate(date: datePicker.date)
        hideAnimation()
     }
+    
+    // Action to dismiss viewcontroller when user did tap on empty space
+    
     @IBAction func missDidTap(){
         hideAnimation()
     }

@@ -10,6 +10,8 @@ import Foundation
 final class EditingViewModel {
     var spending : Spending?
     var income : Income?
+    
+    
     func loadSpendingCategories() -> [SpendingCategories]?{
         let request = SpendingCategories.fetchRequest()
         let categories = try? CoreDataService.mainContext.fetch(request)
@@ -21,6 +23,7 @@ final class EditingViewModel {
         let categories = try? CoreDataService.mainContext.fetch(request)
         return  categories
     }
+    
     
     func updateCategory(category : CategoryProtocol, operation : OperationProtocol) -> OperationProtocol{
         switch operation.categoryPicked {

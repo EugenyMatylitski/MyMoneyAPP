@@ -8,38 +8,12 @@
 import Foundation
 import UIKit
 
+//MARK: delegate to update date of selected category
+
 protocol ReloadDateDelegate {
     func reloadDate (operation : OperationProtocol)
 }
 
-//final class DateEditingVC : UIViewController{
-//    @IBOutlet private weak var datePicker : UIDatePicker!
-//    var operation : OperationProtocol!
-//    var editingVM = EditingViewModel()
-//    var delegate : ReloadDateDelegate?
-//    override func viewDidLoad() {
-//        datePicker.date = operation.date ?? Date()
-//        setupNavBar()
-//    }
-//
-//    private func setupNavBar(){
-//        let buttonImage = UIImage(systemName: "chevron.backward")
-//        let backButton = UIBarButtonItem(image: buttonImage, style: .plain, target: self, action: #selector(backButtonDidTap))
-//        backButton.tintColor = .white
-//        navigationItem.setLeftBarButton(backButton, animated: false)
-//        let saveButton = UIBarButtonItem(title: "OK", style: .plain, target: self, action: #selector(saveButtonDidTap))
-//        saveButton.tintColor = .white
-//        navigationItem.setRightBarButton(saveButton, animated: false)
-//    }
-//    @objc private func backButtonDidTap(){
-//        navigationController?.popViewController(animated: true)
-//    }
-//    @objc private func saveButtonDidTap(){
-//        let newOperation = editingVM.saveNewDate(operation: self.operation, date: datePicker.date)
-//        delegate?.reloadDate(operation: newOperation)
-//        navigationController?.popViewController(animated: true)
-//    }
-//}
 
 final class DateEditingVC : UIViewController{
     @IBOutlet private weak var datePicker : UIDatePicker!
@@ -63,6 +37,16 @@ final class DateEditingVC : UIViewController{
         showAnimation()
     }
     
+    
+    func setupView(){
+        datePicker.alpha = 0.0
+        datePicker.backgroundColor = .clear
+        datePicker.tintColor = .clear
+        view.backgroundColor = .clear
+    }
+    
+// Setup animations block
+    
     func showAnimation(){
         UIView.animate(withDuration: 0.2, delay: 0) {
             self.view.backgroundColor = .black.withAlphaComponent(0.2)
@@ -73,14 +57,7 @@ final class DateEditingVC : UIViewController{
             self.cancelButton.tintColor = .tintColor
         }
     }
-    
-    func setupView(){
-        datePicker.alpha = 0.0
-        datePicker.backgroundColor = .clear
-        datePicker.tintColor = .clear
-        view.backgroundColor = .clear
-    }
-    
+
     func setupButtons(){
         okButton.titleLabel?.font = .systemFont(ofSize: 18)
         okButton.setTitle("ОК", for: .normal)
@@ -119,6 +96,7 @@ final class DateEditingVC : UIViewController{
             self.dismiss(animated: false)
         }
     }
+//End of animations block
     
     @objc private func cancelButtonDidTap(){
        hideAnimation()
@@ -129,6 +107,7 @@ final class DateEditingVC : UIViewController{
         delegate?.reloadDate(operation: newOperation)
         hideAnimation()
     }
+ // Action to dismiss viewcontroller when user did tap on empty space
     @IBAction private func tapGesture(){
         hideAnimation()
     }

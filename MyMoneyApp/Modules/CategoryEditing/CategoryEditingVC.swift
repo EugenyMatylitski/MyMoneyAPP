@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 
+//MARK: delegate to update category of selected operation
+
 protocol ReloadCategoryDelegate  {
     func setOperation(operation : OperationProtocol)
 }

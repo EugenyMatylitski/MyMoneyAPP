@@ -17,16 +17,19 @@ final class AddAccountVC : UIViewController{
     @IBOutlet private weak var topView : UIView!
     
     var account : Account!
+    var oldAccount : Account?
     var newAccount : Account?
     var topViewColor : UIColor?
     let accountsVM  = AccountsViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavBar()
+        oldAccount = account
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setup()
+        
+        setup(account: oldAccount)
     }
     
     @IBAction private func deleteButtonDidTap(){
@@ -43,8 +46,15 @@ final class AddAccountVC : UIViewController{
     
     
     @objc private func cancelDidTap(){
+        self.account = oldAccount
+        if let newAccount = newAccount {
+            accountsVM.deleteAccount(account: newAccount)
+        }
+        CoreDataService.saveContext()
         navigationController?.popToRootViewController(animated: true)
     }
+    
+    
     @IBAction private func chooseCurrencyDidTap(){
         let currenciesVC = UIStoryboard(name: "Main", bundle: nil)
             .instantiateViewController(withIdentifier: "\(ChooseCurrencyVC.self)") as? ChooseCurrencyVC
@@ -57,7 +67,6 @@ final class AddAccountVC : UIViewController{
             newAccount.amount = Double(accountBalanceTextField.text ?? "0") ?? 0
             currenciesVC?.account = newAccount
         }
-//        currenciesVC?.topViewColor = self.topViewColor
         currenciesVC?.modalPresentationStyle = .overCurrentContext
         present(currenciesVC ?? .init(), animated: false)
     }
@@ -77,17 +86,20 @@ final class AddAccountVC : UIViewController{
             accountToUpdate.name = name
             accountToUpdate.amount = Double(balance) ?? 0.0
             accountToUpdate.comment = comment
+            if let newAccount = newAccount {
+                accountsVM.deleteAccount(account: newAccount)
+            }
             accountsVM.updateAccount(accountToUpdate)
             navigationController?.popToRootViewController(animated: true)
         }
     }
     
-    private func setup(){
+    private func setup(account: Account?){
         if account != nil {
-            accountNameTextField.text = account.name
-            accountBalanceTextField.text = account.amount.cutZero()
-            chooseCurrencyButton.setTitle("\(account.currencySymbol) (\(account.currency ?? ""))", for: .normal)
-            accountCommentTextView.text = account.comment
+            accountNameTextField.text = account?.name
+            accountBalanceTextField.text = account?.amount.cutZero()
+            chooseCurrencyButton.setTitle("\(account?.currencySymbol ?? "") (\(account?.currency ?? ""))", for: .normal)
+            accountCommentTextView.text = account?.comment
             
         }else {
             accountNameTextField.becomeFirstResponder()
@@ -105,11 +117,12 @@ final class AddAccountVC : UIViewController{
         self.navigationItem.leftBarButtonItem?.tintColor = .white
     }
 }
+
+//MARK: delegate to setup account
+
 extension AddAccountVC : SetupAccountDelegate{
     func setupAccount(account: Account) {
-        self.account = account
-        setup()
+        self.newAccount = account
+        setup(account: newAccount)
     }
-    
-    
 }

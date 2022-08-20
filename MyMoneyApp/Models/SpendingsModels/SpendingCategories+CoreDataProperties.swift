@@ -25,6 +25,7 @@ extension SpendingCategories {
 }
 
 // MARK: Generated accessors for spendings
+
 extension SpendingCategories {
 
     @objc(addSpendingsObject:)

@@ -65,6 +65,9 @@ final class CalculatorVC : UIViewController{
         accounts = try! CoreDataService.mainContext.fetch(request)
     }
     
+    
+// MARK: Calculator logic
+    
     @IBAction private func numDidTap(sender : UIButton){
         resultLabel.text? += String(sender.tag)
     }
@@ -113,10 +116,11 @@ final class CalculatorVC : UIViewController{
         case .none:
             break
         }
-        
         delegate?.reloadData()
         dismiss(animated: true)
     }
+    
+// End of calculator logic
     
     
     private func setupColors(ofCategory : CategoryProtocol?){
@@ -151,6 +155,8 @@ final class CalculatorVC : UIViewController{
     }
     
 }
+
+// MARK: tableView delegate
 
 extension CalculatorVC : UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

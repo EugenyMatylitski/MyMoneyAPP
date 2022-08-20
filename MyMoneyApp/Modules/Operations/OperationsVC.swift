@@ -7,6 +7,8 @@
 
 import Foundation
 import UIKit
+//POD
+
 import DropDown
 
 final class OperationsVC : UIViewController{
@@ -37,10 +39,10 @@ final class OperationsVC : UIViewController{
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        loadOperationsFiltered()
+        loadOperationsDateFiltered()
     }
     
-    func loadOperationsFiltered(){
+    func loadOperationsDateFiltered(){
         switch navigationItem.rightBarButtonItem?.title {
         case DatePicked.allTime.rawValue :
             loadOperations()
@@ -85,6 +87,7 @@ final class OperationsVC : UIViewController{
         }
     }
     
+    
     func loadDateFilteredOperations(index : Index, date : Date){
         switch self.typeOfOperation {
         case .income:
@@ -107,7 +110,7 @@ final class OperationsVC : UIViewController{
         self.topView.backgroundColor = self.topViewColor
     }
     
-    
+
     private func setupDropDown(){
         menu.anchorView = navigationItem.rightBarButtonItem
         menu.dataSource = [DatePicked.allTime.rawValue,
@@ -151,6 +154,9 @@ final class OperationsVC : UIViewController{
 }
 
 
+
+//MARK: TableView delegate
+
 extension OperationsVC : UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -179,6 +185,8 @@ extension OperationsVC : UITableViewDataSource, UITableViewDelegate {
     }
     
 }
+
+//MARK: delegate to show operations of chosen date
 
 extension OperationsVC : ChosenDateDelegate{
     func setChosenDate(date : Date){

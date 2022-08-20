@@ -11,9 +11,13 @@ import CoreData
 
 @objc(SpendingCategories)
 public class SpendingCategories: NSManagedObject {
+    
+
     var allSpendings : [Spending]{
         return spendings?.allObjects as? [Spending] ?? []
     }
+    
+//Property to be able to count sum of all expences
     var moneySpent : Double{
         var moneySpent : Double = 0.0
         allSpendings.forEach { spending in

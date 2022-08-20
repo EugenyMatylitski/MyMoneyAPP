@@ -11,7 +11,9 @@ import CoreData
 
 final class AccountsViewModel{
     let context = CoreDataService.mainContext
+    
     var dateOfcreating : Date?
+    
     func saveAccount(accountName : String, accountAmount : String, currency : String?, comment : String?, dateOfCreating : Date){
         guard let accountAmount = Double(accountAmount) else {return}
         CoreDataService.mainContext.perform {
