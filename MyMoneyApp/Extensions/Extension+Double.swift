@@ -7,6 +7,7 @@
 
 import Foundation
 //MARK: cutting zero in double value when we want to use it in string interpolation
+
 extension Double{
     func cutZero() -> String{
     var string = String(format: "%g", self)

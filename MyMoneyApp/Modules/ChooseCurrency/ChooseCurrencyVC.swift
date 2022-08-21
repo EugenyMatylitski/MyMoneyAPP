@@ -17,7 +17,8 @@ final class ChooseCurrencyVC : UIViewController{
     let currencies : [Currency] = [(name : "Доллар США", symbol: "usd"),
                                    (name: "Евро", symbol: "eur"),
                                    (name: "Белорусский рубль", symbol: "byn")]
-    var account : Account?
+    var oldAccount : Account?
+    var newAccount : Account?
     var delegate : SetupAccountDelegate?
 
     override func viewDidLoad() {
@@ -76,7 +77,10 @@ extension ChooseCurrencyVC : UITableViewDelegate, UITableViewDataSource{
         cell?.currency = currencies[indexPath.row]
         cell?.hideElements()
         cell?.showElements()
-        if cell?.currency?.symbol == self.account?.currency ?? ""{
+        if cell?.currency?.symbol == self.oldAccount?.currency ?? ""{
+            cell?.accessoryType = .checkmark
+        }
+        if cell?.currency?.symbol == self.newAccount?.currency ?? ""{
             cell?.accessoryType = .checkmark
         }
         return cell ?? .init()
@@ -87,17 +91,14 @@ extension ChooseCurrencyVC : UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let newAccount = Account(context: CoreDataService.mainContext)
-        newAccount.amount = self.account?.amount ?? 0.0
-        newAccount.comment = self.account?.comment
-        newAccount.currency = self.account?.currency
-        newAccount.dateOfCreating = self.account?.dateOfCreating
-        newAccount.name = self.account?.name
-        newAccount.spendings = self.account?.spendings
-        newAccount.incomes = self.account?.incomes
-        newAccount.currency = currencies[indexPath.row].symbol
-//        CoreDataService.saveContext()
-        delegate?.setupAccount(account: newAccount)
+        if let newAccount = self.newAccount{
+            newAccount.currency = currencies[indexPath.row].symbol
+            delegate?.setupAccount(account: newAccount)
+        }else if let oldAccount = self.oldAccount {
+            oldAccount.currency = currencies[indexPath.row].symbol
+            delegate?.setupAccount(account: oldAccount)
+        }
+        
         dismiss(animated: false)
     }
 }

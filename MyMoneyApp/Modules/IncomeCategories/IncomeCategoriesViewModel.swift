@@ -28,8 +28,7 @@ final class IncomeCategoriesViewModel{
             }
             CoreDataService.saveContext()
         }
-        let newRequest = IncomeCategories.fetchRequest()
-        var updatedCategories = try? CoreDataService.mainContext.fetch(newRequest)
+        var updatedCategories = try? CoreDataService.mainContext.fetch(request)
         updatedCategories?.sort(by: { first, second in
             first.moneyIncome > second.moneyIncome
         })

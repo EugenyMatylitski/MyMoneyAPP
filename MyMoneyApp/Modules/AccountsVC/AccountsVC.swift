@@ -80,6 +80,7 @@ final class AccountsVC : UIViewController{
         guard let nextVC = UIStoryboard(name: "Main", bundle: nil)
             .instantiateViewController(withIdentifier: "\(AddAccountVC.self)") as? AddAccountVC
         else {return}
+        nextVC.newAccount = Account(context: CoreDataService.mainContext)
         nextVC.topViewColor = self.topView.backgroundColor
         navigationController?.pushViewController(nextVC, animated: true)
     }
@@ -112,7 +113,7 @@ extension AccountsVC : UITableViewDelegate, UITableViewDataSource{
         accountsTableView.deselectRow(at: indexPath, animated: true)
         guard let nextVC = UIStoryboard(name: "Main", bundle: nil)
             .instantiateViewController(withIdentifier: "\(AddAccountVC.self)") as? AddAccountVC else {return}
-        nextVC.account = accounts[indexPath.row]
+            nextVC.oldAccount = accounts[indexPath.row]
             navigationController?.pushViewController(nextVC, animated: true)
             nextVC.topViewColor = self.topView.backgroundColor
         } else {

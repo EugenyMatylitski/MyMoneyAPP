@@ -24,6 +24,7 @@
 		842FA94728AB9E5E009E9199 /* CategoryEditingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842FA94628AB9E5E009E9199 /* CategoryEditingVC.swift */; };
 		842FA94B28AC1D43009E9199 /* SumEditingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842FA94A28AC1D43009E9199 /* SumEditingVC.swift */; };
 		842FA94E28AC318E009E9199 /* DateEditingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842FA94D28AC318E009E9199 /* DateEditingVC.swift */; };
+		847560A128B2A2A000486644 /* AccountStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847560A028B2A2A000486644 /* AccountStruct.swift */; };
 		84852F392885B81F00B1C468 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84852F382885B81F00B1C468 /* AppDelegate.swift */; };
 		84852F3B2885B81F00B1C468 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84852F3A2885B81F00B1C468 /* SceneDelegate.swift */; };
 		84852F3D2885B81F00B1C468 /* CategoriesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84852F3C2885B81F00B1C468 /* CategoriesVC.swift */; };
@@ -79,6 +80,7 @@
 		842FA94628AB9E5E009E9199 /* CategoryEditingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryEditingVC.swift; sourceTree = "<group>"; };
 		842FA94A28AC1D43009E9199 /* SumEditingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumEditingVC.swift; sourceTree = "<group>"; };
 		842FA94D28AC318E009E9199 /* DateEditingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateEditingVC.swift; sourceTree = "<group>"; };
+		847560A028B2A2A000486644 /* AccountStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountStruct.swift; sourceTree = "<group>"; };
 		84852F352885B81E00B1C468 /* MyMoneyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMoneyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84852F382885B81F00B1C468 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84852F3A2885B81F00B1C468 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -369,6 +371,7 @@
 			isa = PBXGroup;
 			children = (
 				84AE27542897F7BE00B446D0 /* AddAccountVC.swift */,
+				847560A028B2A2A000486644 /* AccountStruct.swift */,
 			);
 			path = AddAccountVC;
 			sourceTree = "<group>";
@@ -554,6 +557,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				847560A128B2A2A000486644 /* AccountStruct.swift in Sources */,
 				84852F3D2885B81F00B1C468 /* CategoriesVC.swift in Sources */,
 				842FA92928A6439B009E9199 /* CategoryProtocol.swift in Sources */,
 				84852F392885B81F00B1C468 /* AppDelegate.swift in Sources */,

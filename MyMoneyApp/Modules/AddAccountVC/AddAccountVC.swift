@@ -16,15 +16,24 @@ final class AddAccountVC : UIViewController{
     @IBOutlet private weak var chooseCurrencyButton : UIButton!
     @IBOutlet private weak var topView : UIView!
     
-    var account : Account!
-    var oldAccount : Account?
+    
+    var oldAccount : Account?{
+        didSet{
+            oldAccountValues.name = oldAccount?.name
+            oldAccountValues.amount = oldAccount?.amount
+            oldAccountValues.currency = oldAccount?.currency
+            oldAccountValues.comment = oldAccount?.comment
+        }
+    }
+    var oldAccountValues = AccountStruct()
     var newAccount : Account?
+    var notSavedAccount : Account?
     var topViewColor : UIColor?
     let accountsVM  = AccountsViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavBar()
-        oldAccount = account
+
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -37,7 +46,7 @@ final class AddAccountVC : UIViewController{
         let cancelAction = UIAlertAction(title: "Отменить", style: .cancel)
         alert.addAction(cancelAction)
         let deleteAction = UIAlertAction(title: "Удалить", style: .destructive) { _ in
-            self.accountsVM.deleteAccount(account: self.account)
+            self.accountsVM.deleteAccount(account: self.oldAccount!)
             self.navigationController?.popToRootViewController(animated: true)
         }
         alert.addAction(deleteAction)
@@ -46,7 +55,12 @@ final class AddAccountVC : UIViewController{
     
     
     @objc private func cancelDidTap(){
-        self.account = oldAccount
+        if let oldAccount = oldAccount {
+            oldAccount.name = oldAccountValues.name
+            oldAccount.amount = oldAccountValues.amount ?? 0.0
+            oldAccount.currency = oldAccountValues.currency
+            oldAccount.comment = oldAccountValues.comment
+        }
         if let newAccount = newAccount {
             accountsVM.deleteAccount(account: newAccount)
         }
@@ -59,46 +73,46 @@ final class AddAccountVC : UIViewController{
         let currenciesVC = UIStoryboard(name: "Main", bundle: nil)
             .instantiateViewController(withIdentifier: "\(ChooseCurrencyVC.self)") as? ChooseCurrencyVC
         currenciesVC?.delegate = self
-        if self.account != nil{
-            currenciesVC?.account = self.account
-        } else {
-            let newAccount = Account(context: CoreDataService.mainContext)
-            newAccount.name = accountNameTextField.text ?? ""
-            newAccount.amount = Double(accountBalanceTextField.text ?? "0") ?? 0
-            currenciesVC?.account = newAccount
+        if let oldAccount = self.oldAccount{
+            currenciesVC?.oldAccount = oldAccount
+        } else if let newAccount = self.newAccount {
+            currenciesVC?.newAccount = newAccount
+            currenciesVC?.newAccount?.name = accountNameTextField.text ?? ""
+            currenciesVC?.newAccount?.amount = Double(accountBalanceTextField.text ?? "") ?? 0
         }
         currenciesVC?.modalPresentationStyle = .overCurrentContext
         present(currenciesVC ?? .init(), animated: false)
     }
-    
+ 
     
     @objc private func saveDidTap(){
         guard let name = accountNameTextField.text else {return}
         guard let balance = accountBalanceTextField.text else {return}
-        guard let comment = accountCommentTextView.text else {return}
-        if account == nil {
+        if let oldAccount = self.oldAccount {
             if name != "" && balance != ""{
-                accountsVM.saveAccount(accountName: name, accountAmount:balance, currency: nil, comment: comment, dateOfCreating : Date())
+                oldAccount.name = name
+                oldAccount.amount = Double(balance) ?? 0
+                oldAccount.dateOfCreating = Date()
+                CoreDataService.saveContext()
                 navigationController?.popToRootViewController(animated: true)
             }
         }else{
-            guard let accountToUpdate = account else {return}
-            accountToUpdate.name = name
-            accountToUpdate.amount = Double(balance) ?? 0.0
-            accountToUpdate.comment = comment
-            if let newAccount = newAccount {
-                accountsVM.deleteAccount(account: newAccount)
-            }
-            accountsVM.updateAccount(accountToUpdate)
+            if let newAccount = self.newAccount {
+            CoreDataService.saveContext()
             navigationController?.popToRootViewController(animated: true)
+            }
         }
     }
     
     private func setup(account: Account?){
         if account != nil {
             accountNameTextField.text = account?.name
-            accountBalanceTextField.text = account?.amount.cutZero()
-            chooseCurrencyButton.setTitle("\(account?.currencySymbol ?? "") (\(account?.currency ?? ""))", for: .normal)
+            accountBalanceTextField.text = "\(account?.amount.cutZero() ?? 0.0.cutZero() )"
+            if let currency = account?.currency {
+                chooseCurrencyButton.setTitle("\(account?.currencySymbol ?? "") (\(account?.currency ?? ""))", for: .normal)
+            }else{
+                chooseCurrencyButton.setTitle("Выбрать", for: .normal)
+            }
             accountCommentTextView.text = account?.comment
             
         }else {
@@ -122,7 +136,7 @@ final class AddAccountVC : UIViewController{
 
 extension AddAccountVC : SetupAccountDelegate{
     func setupAccount(account: Account) {
-        self.newAccount = account
-        setup(account: newAccount)
+        self.notSavedAccount = account
+        setup(account: notSavedAccount)
     }
 }

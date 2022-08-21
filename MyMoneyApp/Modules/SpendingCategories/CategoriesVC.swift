@@ -48,7 +48,7 @@ class CategoriesVC: UIViewController{
     }
 }
 
-
+//MARK: TableView delegate
 extension CategoriesVC : UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return categories.count
