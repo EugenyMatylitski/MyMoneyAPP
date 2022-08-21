@@ -42,9 +42,9 @@ class CategoryCell: UICollectionViewCell {
             }
             
         }
-        bynLabel.text = "\(bynSpending.cutZero()) BYN "
-        eurLabel.text = "\(eurSpending.cutZero()) \u{20AC}"
-        usdLabel.text = "\(usdSpending.cutZero()) \u{0024}"
+        bynLabel.text = "\(bynSpending) BYN "
+        eurLabel.text = "\(eurSpending) \u{20AC}"
+        usdLabel.text = "\(usdSpending) \u{0024}"
     }
     
     func setupIncomes(category : IncomeCategories, incomes : [Income]){

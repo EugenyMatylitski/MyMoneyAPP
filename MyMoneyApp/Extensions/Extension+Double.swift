@@ -9,8 +9,8 @@ import Foundation
 //MARK: cutting zero in double value when we want to use it in string interpolation
 
 extension Double{
-    func cutZero() -> String{
-    var string = String(format: "%g", self)
+    func formatted() -> String{
+    var string = String(format: "%.2f", self)
     return string
     }
 }

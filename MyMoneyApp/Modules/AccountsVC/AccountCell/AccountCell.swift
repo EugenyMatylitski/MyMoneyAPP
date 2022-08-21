@@ -14,6 +14,6 @@ class AccountCell: UITableViewCell {
     func setup (account : Account){
         
         self.accountName.text = account.name
-        self.accountAmount.text = "\(account.amount.cutZero()) \(account.currencySymbol ?? "")"
+        self.accountAmount.text = "\(account.amount) \(account.currencySymbol ?? "")"
     }
 }

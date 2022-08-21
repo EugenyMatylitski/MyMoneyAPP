@@ -44,9 +44,9 @@ final class AccountsVC : UIViewController{
                     usdSum += account.amount
                 }
             }
-            bynLabel.text = "BYN \(bynSum.cutZero())"
-            eurLabel.text = "\u{20AC} \(eurSum.cutZero())"
-            usdLabel.text = "\u{0024} \(usdSum.cutZero())"
+            bynLabel.text = "BYN \(bynSum)"
+            eurLabel.text = "\u{20AC} \(eurSum)"
+            usdLabel.text = "\u{0024} \(usdSum)"
         }
         
     }

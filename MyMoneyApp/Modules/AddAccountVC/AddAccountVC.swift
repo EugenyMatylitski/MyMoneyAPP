@@ -107,7 +107,7 @@ final class AddAccountVC : UIViewController{
     private func setup(account: Account?){
         if account != nil {
             accountNameTextField.text = account?.name
-            accountBalanceTextField.text = "\(account?.amount.cutZero() ?? 0.0.cutZero() )"
+            accountBalanceTextField.text = "\(account?.amount ?? 0.0 )"
             if let currency = account?.currency {
                 chooseCurrencyButton.setTitle("\(account?.currencySymbol ?? "") (\(account?.currency ?? ""))", for: .normal)
             }else{
